@@ -9,7 +9,7 @@
             <script>
                 // randomly select from an array of options
                 function chooseRandom(anArray) {
-                    let randomChoice = anArray[Math.floor(Math.random * anArray.length)];
+                    let randomChoice = anArray[Math.floor(Math.random() * anArray.length)];
                     return randomChoice;
                 }
                 // play rock, paper scissors
@@ -32,13 +32,14 @@
                         return selection;
                     } else {
                         console.log("Please enter rock, paper, or scissors: ");
-                        userPlay()
+                        selection = userPlay();
+                        return selection;
                     }
                 }
 
                 // check for valid input
                 function check(selection) {
-                    if (selection === ("rock" || "paper" || "scissors")){
+                    if (selection === "rock" || selection === "paper" || selection === "scissors") {
                         return true;
                     } else {
                         return false;
@@ -55,18 +56,18 @@
                 function determineWinner(userChoice, computerChoice) {
                     if (userChoice === computerChoice) {
                         return "It's a tie!";
-                    } else if (userChoice === 'rock' && computerChoice == 'scissors') {
+                    } else if (userChoice === 'rock' && computerChoice === 'scissors') {
                         return "You win - rock beats scissors!";
-                    } else if (userChoice === 'rock' && computerChoice == 'paper') {
+                    } else if (userChoice === 'rock' && computerChoice === 'paper') {
                         return "You lose - paper beats rock.";
-                    } else if (userChoice === 'paper' && computerChoice == 'rock') {
+                    } else if (userChoice === 'paper' && computerChoice === 'rock') {
                         return "You win - paper beats rock!";
-                    } else if (userChoice === 'paper' && computerChoice == 'scissors') {
+                    } else if (userChoice === 'paper' && computerChoice === 'scissors') {
                         return "You lose - scissors beats paper.";
-                    } else if (userChoice === 'scissors' && computerChoice == 'paper') {
+                    } else if (userChoice === 'scissors' && computerChoice === 'paper') {
                         return "You win - scissors beats paper!";
-                    } else if (userChoice === 'scissors' && computerChoice == 'rock') {
-                        return "You lose - rock beats scissors";
+                    } else if (userChoice === 'scissors' && computerChoice === 'rock') {
+                        return "You lose - rock beats scissors.";
                     }
                 }
                 // tally of wins, losses, ties updated
