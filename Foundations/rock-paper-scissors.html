@@ -28,7 +28,7 @@
                     let selection = prompt("Type rock, paper, or scissors: ").toLowerCase();
                     // make sure it's a valid entry
                     let keepGoing = check(selection);
-                    if (keepGoing){
+                    if (keepGoing) {
                         return selection;
                     } else {
                         console.log("Please enter rock, paper, or scissors: ");
@@ -38,7 +38,7 @@
 
                 // check for valid input
                 function check(selection) {
-                    if (selection === "rock" || "paper" || "scissors"){
+                    if (selection === ("rock" || "paper" || "scissors")){
                         return true;
                     } else {
                         return false;
