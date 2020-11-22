@@ -72,8 +72,52 @@
                 }
                 // tally of wins, losses, ties updated
                 // result reported to player
-                console.log(playRound());
+                
                 // repeat
+                function playGame() {
+                    let humanScore = 0;
+                    let computerScore = 0;
+                    let keepGoing = checkEnd(humanScore, computerScore);
+                    while (keepGoing) {
+                        let result = playRound();
+                        let whoWon = humanComputerOrTie(result);
+                        if (whoWon === 'human') {
+                            humanScore += 1;
+                        } else if (whoWon === 'computer') {
+                            computerScore += 1;
+                        } 
+                        keepGoing = checkEnd(humanScore, computerScore);
+                    }
+                    let winner = '';
+                    if (humanScore === 5) {
+                        alert("You won!");
+                    } else {
+                        alert("You lost!");
+                    }
+                }
+
+                // check whether human or computer has won series
+                function checkEnd(humanScore, computerScore) {
+                    if (humanScore === 5 || computerScore === 5) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
+                // report winner identity or tie
+                function humanComputerOrTie(result) {
+                    if (result === "It's a tie!") {
+                        return;
+                    } else if (result.slice(0,7) === "You win") {
+                        return 'human';
+                    } else {
+                        return 'computer';
+                    }
+                }
+
+                // play a game
+                playGame();
             </script>
         </body>
     </main>
