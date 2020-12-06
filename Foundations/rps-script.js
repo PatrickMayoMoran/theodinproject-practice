@@ -37,10 +37,9 @@ function check(selection) {
   }
 }
 // play a round of computer vs. player
-function playRound() {
-  let userChoice = userPlay();
+function playRound(playerChoice) {
   let computerChoice = computerPlay();
-  let result = determineWinner(userChoice, computerChoice);
+  let result = determineWinner(playerChoice, computerChoice);
   return result;
 }
 // win, tie, or loss determined
@@ -106,6 +105,14 @@ function humanComputerOrTie(result) {
       return 'computer';
   }
 }
+
+let buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', function(e) {
+    let playerChoice = button.id;
+    let result = playRound(playerChoice);
+  })
+})
 
 // play a game
 playGame();
