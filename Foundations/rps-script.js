@@ -133,9 +133,7 @@ function updateScoreboard(winner) {
 
 function addOne(score) {
     currentScore = score.textContent;
-    console.log(currentScore);
     currentScoreNumber = Number(currentScore);
     currentScoreNumber += 1;
-    //console.log(currentScoreNumber);
     return currentScoreNumber;
 }
