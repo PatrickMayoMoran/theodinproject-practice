@@ -111,8 +111,31 @@ buttons.forEach((button) => {
   button.addEventListener('click', function(e) {
     let playerChoice = button.id;
     let result = playRound(playerChoice);
+    let winner = humanComputerOrTie(result);
+    updateScoreboard(winner);
   })
 })
 
 // play a game
-playGame();
+// playGame();
+
+function updateScoreboard(winner) {
+  if (winner == "human") {
+    let humanScore = document.querySelector('#human-score');
+    newScore = addOne(humanScore);
+    humanScore.textContent = String(newScore);
+  } else if (winner == "computer") {
+    let computerScore = document.querySelector('#computer-score');
+    newScore = addOne(computerScore);
+    computerScore.textContent = String(newScore);
+  } else return;
+}
+
+function addOne(score) {
+    currentScore = score.textContent;
+    console.log(currentScore);
+    currentScoreNumber = Number(currentScore);
+    currentScoreNumber += 1;
+    //console.log(currentScoreNumber);
+    return currentScoreNumber;
+}
