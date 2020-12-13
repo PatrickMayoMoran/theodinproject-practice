@@ -95,6 +95,26 @@ function checkEnd(humanScore, computerScore) {
   }
 }
 
+function checkWinner() {
+  userScore = Number(document.getElementById('human-score').textContent);
+  compScore = Number(document.getElementById('computer-score').textContent);
+  let keepGoing = checkEnd(userScore, compScore);
+  if (keepGoing) return;
+  if (userScore === 5) {
+    let winner = 'Human';
+    declareWinner(winner);
+  } else {
+    let winner = 'Computer';
+    declareWinner(winner);
+  }
+}
+
+function declareWinner(winner) {
+  result = document.getElementById('result');
+  let declaration = winner + ' wins! Game over!';
+  result.textContent = declaration;
+}
+
 // report winner identity or tie
 function humanComputerOrTie(result) {
   if (result === "It's a tie!") {
@@ -114,6 +134,7 @@ buttons.forEach((button) => {
     reportRoundResult(result);
     let winner = humanComputerOrTie(result);
     updateScoreboard(winner);
+    checkWinner();
   })
 })
 
@@ -140,13 +161,13 @@ function addOne(score) {
 }
 
 function reportRoundResult(result) {
-  scoreboard = document.getElementById('scoreboard');
+  user = document.querySelector('.user');
   if (!document.getElementById('result')) {
     text = document.createElement("p");
     text.id = 'result';
   }
   text.textContent = result;
   results = document.querySelector('.results');
-  results.insertBefore(text, scoreboard);
+  results.insertBefore(text, user);
   return;
 }
