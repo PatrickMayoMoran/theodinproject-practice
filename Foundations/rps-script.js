@@ -111,6 +111,7 @@ buttons.forEach((button) => {
   button.addEventListener('click', function(e) {
     let playerChoice = button.id;
     let result = playRound(playerChoice);
+    reportRoundResult(result);
     let winner = humanComputerOrTie(result);
     updateScoreboard(winner);
   })
@@ -136,4 +137,13 @@ function addOne(score) {
     currentScoreNumber = Number(currentScore);
     currentScoreNumber += 1;
     return currentScoreNumber;
+}
+
+function reportRoundResult(result) {
+  scoreboard = document.getElementById('scoreboard');
+  text = document.createElement("p");
+  text.textContent = result;
+  results = document.getElementById('results');
+  results.insertBefore(text, scoreboard);
+  return;
 }
