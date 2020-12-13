@@ -141,9 +141,12 @@ function addOne(score) {
 
 function reportRoundResult(result) {
   scoreboard = document.getElementById('scoreboard');
-  text = document.createElement("p");
+  if (!document.getElementById('result')) {
+    text = document.createElement("p");
+    text.id = 'result';
+  }
   text.textContent = result;
-  results = document.getElementById('results');
+  results = document.querySelector('.results');
   results.insertBefore(text, scoreboard);
   return;
 }
