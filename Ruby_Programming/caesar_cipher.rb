@@ -17,12 +17,12 @@ end
 
 p convert_to_nums("Deez Nuttz")
 
-def add_offset(num_array)
+def add_offset(num_array, offset)
   offset_array = num_array.map do |num|
     if lowercase?(num)
-      lower_offset(num)
+      lower_offset(num, offset)
     elsif  uppercase?(num)
-      upper_offset(num)
+      upper_offset(num, offset)
     else
       return num
     end
@@ -37,5 +37,23 @@ def uppercase?(num)
   num.between?(65, 90)
 end
 
+def lower_offset(num, offset)
+  num -= 97
+  alphabet = ('a'..'z').to_a
+  position = num + offset
+  if position > 25
+    position -= 25
+  end
+  return position
+end
 
+def upper_offset(num, offset)
+  num -= 65
+  alphabet = ('A'..'Z').to_a
+  position = num + offset
+  if position > 25
+    position -= 25
+  end
+  return position
+end
   
