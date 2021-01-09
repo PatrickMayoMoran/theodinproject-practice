@@ -14,8 +14,6 @@ def convert_to_nums(string)
   return num_array
 end
 
-p convert_to_nums("My man!")
-
 def add_offset(num_array, offset)
   offset_array = num_array.map {|num| get_letter(num, offset)}
 end
@@ -61,3 +59,4 @@ def upper_offset(num, offset)
 end
   
 puts make_caesar_cipher("Dirt on your couch!", -6)
+puts make_caesar_cipher("My Man!!", 3)
