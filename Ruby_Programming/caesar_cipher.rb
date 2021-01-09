@@ -17,14 +17,16 @@ end
 p convert_to_nums("My man!")
 
 def add_offset(num_array, offset)
-  offset_array = num_array.map do |num|
-    if lowercase?(num)
-      return lower_offset(num, offset)
-    elsif  uppercase?(num)
-      return upper_offset(num, offset)
-    else
-      return num.chr
-    end
+  offset_array = num_array.map {|num| get_letter(num, offset)}
+end
+
+def get_letter(num, offset)
+  if lowercase?(num)
+    return lower_offset(num, offset)
+  elsif  uppercase?(num)
+    return upper_offset(num, offset)
+  else
+    return num.chr
   end
 end
 
