@@ -1,13 +1,12 @@
 require 'pry'
 
-'''
 def make_caesar_cipher(string, offset)
   num_array = convert_to_nums(string)
   offset_array = add_offset(num_array, offset)
-  new_array = convert_to_chars(offset_array)
+  new_string = offset_array.join
   return new_string
 end
-'''
+
 
 def convert_to_nums(string)
   string_array = string.split('')
@@ -15,7 +14,7 @@ def convert_to_nums(string)
   return num_array
 end
 
-p convert_to_nums("Deez Nuttz")
+p convert_to_nums("My man!")
 
 def add_offset(num_array, offset)
   offset_array = num_array.map do |num|
@@ -24,7 +23,7 @@ def add_offset(num_array, offset)
     elsif  uppercase?(num)
       upper_offset(num, offset)
     else
-      return num
+      return num.chr
     end
   end
 end
@@ -39,21 +38,24 @@ end
 
 def lower_offset(num, offset)
   num -= 97
-  alphabet = ('a'..'z').to_a
   position = num + offset
   if position > 25
     position -= 25
   end
-  return position
+
+  alphabet = ('a'..'z').to_a
+  return alphabet[position]
 end
 
 def upper_offset(num, offset)
   num -= 65
-  alphabet = ('A'..'Z').to_a
   position = num + offset
   if position > 25
     position -= 25
   end
-  return position
+
+  alphabet = ('A'..'Z').to_a
+  return alphabet[position]
 end
   
+puts make_caesar_cipher("Dirt on your couch!")
