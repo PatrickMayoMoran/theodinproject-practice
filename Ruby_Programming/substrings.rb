@@ -4,7 +4,7 @@ string1 = "Howdy partner, sit down! How's it going?"
 string2 = "BIG HORN, WATCH OUT! IT IS DANGEROUS"
 
 def substring (string, dictionary)
-  given_string = string.downcase.to_a
+  given_string = string.downcase
   results = {}
   dictionary.each do |word|
     split_string = given_string.split(word)
