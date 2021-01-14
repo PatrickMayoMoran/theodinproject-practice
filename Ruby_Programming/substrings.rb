@@ -7,7 +7,6 @@ def substring (string, dictionary)
   given_string = string.downcase.to_a
   results = {}
   dictionary.each do |word|
-    word_array = word.to_a
     split_string = given_string.split(word)
     num_of_instances = split_string.length - 1
     results[word] = num_of_instances
